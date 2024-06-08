@@ -105,8 +105,9 @@
       if (!isNaN(char)) {
         const asciiNumber = numberToAscii(parseInt(char));
         const asciiDiv = document.createElement("div");
-        asciiDiv.classList.add("ascii-number");
-        asciiDiv.textContent = asciiNumber;
+        const asciiWithSeparators = ascii.split("\n").map(line => line.replace(/X/g, "X ").trim()).join("\n");
+        asciiDiv.classList.add("ascii-with-seperators");
+        asciiDiv.textContent = asciiWithSeperators;
         resultContainer.appendChild(asciiDiv);
       }
     }
