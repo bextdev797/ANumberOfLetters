@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Number of Letters</title>
+<style>
+  body {
+    font-family: monospace;
+    text-align: center;
+  }
+  
+  .ascii-number {
+    display: inline-block;
+    margin: 20px;
+  }
+</style>
+</head>
+<body>
+<script>
+  const asciiNumbers = [
+    `
+      XXX
+     X   X
+     X   X
+     X   X
+      XXX
+    `,
+    `
+       X
+      XX
+     X X
+       X
+     XXXXX
+    `,
+    `
+      XXX
+     X   X
+        X
+      XXX
+     X
+    `,
+    `
+      XXX
+         X
+      XXX
+         X
+      XXX
+    `,
+    `
+     X   X
+     X   X
+     XXXXX
+         X
+         X
+    `,
+    `
+     XXXXX
+     X
+     XXXXX
+         X
+     XXXXX
+    `,
+    `
+      XXXX
+     X
+     XXXX
+     X   X
+      XXX
+    `,
+    `
+     XXXXX
+         X
+        X
+       X
+      X
+    `,
+    `
+      XXX
+     X   X
+      XXX
+     X   X
+      XXX
+    `,
+    `
+      XXX
+     X   X
+      XXXX
+          X
+      XXX
+    `
+  ];
+  
+  function numberToAscii(number) {
+    const ascii = asciiNumbers[number];
+    return ascii ? ascii : "Invalid number";
+  }
+
+  function displayAsciiNumbers() {
+    const input = document.getElementById("numberInput").value;
+    const resultContainer = document.getElementById("resultContainer");
+    resultContainer.innerHTML = "";
+    for (let i = 0; i < input.length; i++) {
+      const char = input.charAt(i);
+      if (!isNaN(char)) {
+        const asciiNumber = numberToAscii(parseInt(char));
+        const asciiDiv = document.createElement("div");
+        asciiDiv.classList.add("ascii-number");
+        asciiDiv.textContent = asciiNumber;
+        resultContainer.appendChild(asciiDiv);
+      }
+    }
+  }
+
+</script>
+
+<h1>A Number of Letters</h1>
+
+<label for="numberInput">Enter a number:</label>
+<input type="text" id="numberInput">
+<button onclick="displayAsciiNumbers()">Display ASCII Numbers</button>
+
+<div id="resultContainer"></div>
+
+</body>
+</html>
